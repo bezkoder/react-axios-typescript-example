@@ -44,7 +44,7 @@ export default class AddTutorial extends Component<Props, State> {
     };
 
     TutorialDataService.create(data)
-      .then(response => {
+      .then((response: any) => {
         this.setState({
           id: response.data.id,
           title: response.data.title,
@@ -54,7 +54,7 @@ export default class AddTutorial extends Component<Props, State> {
         });
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }

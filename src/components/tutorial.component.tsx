@@ -66,13 +66,13 @@ export default class Tutorial extends Component<Props, State> {
 
   getTutorial(id: string) {
     TutorialDataService.get(id)
-      .then((response) => {
+      .then((response: any) => {
         this.setState({
           currentTutorial: response.data,
         });
         console.log(response.data);
       })
-      .catch((e) => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }
@@ -86,7 +86,7 @@ export default class Tutorial extends Component<Props, State> {
     };
 
     TutorialDataService.update(data, this.state.currentTutorial.id)
-      .then((response) => {
+      .then((response: any) => {
         this.setState((prevState) => ({
           currentTutorial: {
             ...prevState.currentTutorial,
@@ -96,7 +96,7 @@ export default class Tutorial extends Component<Props, State> {
         }));
         console.log(response.data);
       })
-      .catch((e) => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }
@@ -106,24 +106,24 @@ export default class Tutorial extends Component<Props, State> {
       this.state.currentTutorial,
       this.state.currentTutorial.id
     )
-      .then((response) => {
+      .then((response: any) => {
         console.log(response.data);
         this.setState({
           message: "The tutorial was updated successfully!",
         });
       })
-      .catch((e) => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }
 
   deleteTutorial() {
     TutorialDataService.delete(this.state.currentTutorial.id)
-      .then((response) => {
+      .then((response: any) => {
         console.log(response.data);
         this.props.history.push("/tutorials");
       })
-      .catch((e) => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }

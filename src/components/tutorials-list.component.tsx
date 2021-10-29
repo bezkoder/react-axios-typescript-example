@@ -44,13 +44,13 @@ export default class TutorialsList extends Component<Props, State>{
 
   retrieveTutorials() {
     TutorialDataService.getAll()
-      .then(response => {
+      .then((response: any) => {
         this.setState({
           tutorials: response.data
         });
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }
@@ -72,11 +72,11 @@ export default class TutorialsList extends Component<Props, State>{
 
   removeAllTutorials() {
     TutorialDataService.deleteAll()
-      .then(response => {
+      .then((response: any) => {
         console.log(response.data);
         this.refreshList();
       })
-      .catch(e => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }
@@ -88,13 +88,13 @@ export default class TutorialsList extends Component<Props, State>{
     });
 
     TutorialDataService.findByTitle(this.state.searchTitle)
-      .then(response => {
+      .then((response: any) => {
         this.setState({
           tutorials: response.data
         });
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e: Error) => {
         console.log(e);
       });
   }
